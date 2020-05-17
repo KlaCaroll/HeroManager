@@ -1,13 +1,69 @@
+body{
+    font-family: Helvetica;
+}
+
 h1 {
     width: 300px;
     height: 20px;
-    border: 1px solid red;
-    font-size: 15px;
+    font-size: 20px;
+    text-decoration: underline;
 }
 
-img {
-    width: 100px;
-    height: auto;
-    min-height: 100px;
-    border: 1px solid black;
+li {
+    display: block; 
+    font-size: 12px;
+}
+
+ul>li>a {
+    display: inline-block;
+}
+
+ul>li>a {
+    display: inline-block;
+}
+
+h3 {
+    display: inline-block;
+    font-size: 15px;
+    color : black;
+}
+
+a :hover {
+    font-style: italic;
+}
+
+#searchResults>ul>li>img {
+    width: auto;
+    height: 40px;
+    display: inline-block;
+}
+
+#myhero>img {
+    width: 300px;
+    height: auto;   
+}
+
+#myhero>ul {
+    display: inline-block;
+    position: relative;
+    margin-top: 50px;
+    
+}
+
+div {
+    display: none;
+}
+
+div.active{
+    display: block;
+}
+
+#myhero{
+    -webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    column-width: 300px;
+    column-gap: 20px;
+    width: 90%;
+	max-width: 1500px;
 }
