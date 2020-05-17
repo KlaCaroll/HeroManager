@@ -9,8 +9,12 @@ h1 {
     text-decoration: underline;
 }
 
+#searchResults>ul>li{
+    display: block;
+}
+
 li {
-    display: block; 
+    display: inline-block; 
     font-size: 12px;
 }
 
@@ -30,6 +34,9 @@ h3 {
 
 a :hover {
     font-style: italic;
+}
+
+div {
 }
 
 #searchResults>ul>li>img {
@@ -58,13 +65,12 @@ div.active{
     display: block;
 }
 
+#searchResults{
+   
+}
+
 #myhero{
-    -webkit-column-break-inside: avoid;
-    page-break-inside: avoid;
-    break-inside: avoid;
-    column-width: 180px;
-    column-gap: 20px;
-    width: 90%;
+    width: 180px;
     max-width: 1500px;
     border : 2px solid red;
 }
