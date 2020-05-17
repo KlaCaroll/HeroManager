@@ -7,12 +7,14 @@ var input = document.getElementsByTagName('input')[0];
 var button = document.getElementsByTagName('button')[0];
 var searchName = document.getElementsByName('search')[0];
 var list = document.getElementsByTagName('ul')[0];
-var titleSearchA = document.getElementById('titlesearch1');
-var titleSearchB = document.getElementById('titlesearch2');
-var searchResults = document.getElementById('searchResults');
+var titleSearch = document.getElementById('titlesearch');
 var myhero = document.getElementById('myhero');
+var nav = document.getElementsByTagName('nav')[0];
+var returnToSearchHeroes = document.getElementById('return');
 
-function searchHeroes(){
+function searchHeroes(name){
+    returnToSearchHeroes.classList.remove('active');
+
     fetch(`${baseURLsearch}/${input.value}`)
     .then(function(response) {
         if (!response.ok) {
@@ -20,7 +22,8 @@ function searchHeroes(){
         }
         return response.json();
     })
-    .then(function(data){
+    .then(function(data){   
+
         var newList = document.createElement('ul');
 
         data.results.forEach(function(hero) {
@@ -48,15 +51,9 @@ function searchHeroes(){
         list=newList;
         myhero.classList.remove('active');
         searchResults.classList.add('active');
-        titleSearchA.innerHTML = ('recherche pour ')+(input.value);
-        input.value ='';
+        titleSearch.innerHTML = ('Ma recherche pour '+input.value)
     });
 };
-
-/*
-var oldImageHero = document.getElementsByTagName('img')[0];
-var oldList = document.getElementsByTagName('ul')[0];
-*/
 
 function displayHero(hero){
 
@@ -82,26 +79,57 @@ function displayHero(hero){
     var publisher = document.createElement('li');
     publisher.innerHTML = 'Publisher : '+hero.biography.publisher;
 
-/*
-    oldList.replaceWith(newList);
-    oldList=newList;
-    oldImageHero = document.getElementsByTagName('img')[0];
-    oldImageHero=imageHero;
-*/
-
-
-    titleSearchB.innerHTML = hero.name;
+    var powerstatsList = document.createElement('ul');
+    var powerstats = document.createElement('p')
+    powerstats.innerHTML = 'Power Stats'
+    powerstats.classList.add('text');
+            var intelligence = document.createElement('li');
+            intelligence.innerHTML = 'Intelligence : '+hero.powerstats.intelligence;
+            
+            var strength = document.createElement('li');
+            strength.innerHTML = 'Strenght : '+hero.powerstats.strength;
+            
+            var speed = document.createElement('li');
+            speed.innerHTML = 'Speed : '+hero.powerstats.speed;
+            
+            var durability = document.createElement('li');
+            durability.innerHTML = 'Durability : '+hero.powerstats.durability;
+            
+            var power = document.createElement('li');
+            power.innerHTML = 'Power : '+hero.powerstats.power;
+            
+            var combat = document.createElement('li');
+            combat.innerHTML = 'Combat : '+hero.powerstats.combat;
+            
+            powerstatsList.appendChild(powerstats);
+            powerstats.appendChild(power);
+            powerstats.appendChild(speed);
+            powerstats.appendChild(strength);
+            powerstats.appendChild(intelligence);
+            powerstats.appendChild(combat);
+            powerstats.appendChild(durability);
+    
+    var aliases = document.createElement('li');
+    aliases.innerHTML = 'aliases : '+hero.biography.aliases;
+    
     myhero.appendChild(newList);
-    newList.appendChild(titleHero);
     newList.appendChild(idHero);
     newList.appendChild(gender);
     newList.appendChild(raceHero);
+    newList.appendChild(powerstatsList);
+    newList.appendChild(aliases);
     newList.appendChild(publisher);
 
-//    oldImageHero.replaceWith(imageHero);
-//    oldList.replaceWith(newList);
-//    oldImageHero = imageHero;
-//    list = newList;
+    returnToSearchHeroes.classList.add('active');
+
+    returnToSearchHeroes.addEventListener('click', function goBack(){
+    searchResults.classList.add('active');
+    myhero.classList.remove('active');
+    returnToSearchHeroes.classList.remove('active');
+    });
+
+    titleSearch.innerHTML = hero.name;
+    nav.appendChild(returnToSearchHeroes);
     searchResults.classList.remove('active');
     myhero.classList.add('active');
     

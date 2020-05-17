@@ -39,15 +39,15 @@ a :hover {
 }
 
 #myhero>img {
-    width: 300px;
+    width: 150px;
     height: auto;   
 }
 
 #myhero>ul {
     display: inline-block;
     position: relative;
-    margin-top: 50px;
-    
+    margin: 0;
+    padding: 0;    
 }
 
 div {
@@ -62,8 +62,30 @@ div.active{
     -webkit-column-break-inside: avoid;
     page-break-inside: avoid;
     break-inside: avoid;
-    column-width: 300px;
+    column-width: 180px;
     column-gap: 20px;
     width: 90%;
-	max-width: 1500px;
+    max-width: 1500px;
+    border : 2px solid red;
+}
+
+ul>ul {
+    padding-left: 0;
+    margin-left: 0;
+}
+
+ul>ul>li {
+    margin-left: 10px;
+}
+
+p {
+    font-size: 15px;
+}
+
+#return {
+    display: none;
+}
+
+#return.active{
+    display: inline-block;
 }
